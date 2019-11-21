@@ -19,7 +19,7 @@ public class Controller3D : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        
 
     }
 
@@ -41,13 +41,17 @@ public class Controller3D : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         rb.AddForce(new Vector3(moveHorizontal, 0.0f, moveVertical) * speed);
-       
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
-            rb.AddForce(new Vector3(0, 5, 0) * jumpSpeed, ForceMode.Impulse);
+            rb.AddForce(new Vector3(0, 5f, 0) * jumpSpeed, ForceMode.Impulse);
             isGrounded = false;
         }
 
+       
+        //if (moveHorizontal = true) - rotate Character-Wheel around Z axis
+        //Mathf.Atan2 - pointing in screen space to select where the object goes
+        
     }
 
     
