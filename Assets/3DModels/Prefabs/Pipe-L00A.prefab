@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 621360126206491451}
   - component: {fileID: 3629931814606269884}
   m_Layer: 0
-  m_Name: Pipe-L00A (2)
+  m_Name: Pipe-L00A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7777496138975669308}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.37, y: -3.76, z: -2.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ac64b29bca81948ffb10a0997b297033, type: 2}
+  - {fileID: 2100000, guid: e420c189579a84f8983b577c3e4a11d2, type: 2}
   - {fileID: 2100000, guid: ac64b29bca81948ffb10a0997b297033, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
