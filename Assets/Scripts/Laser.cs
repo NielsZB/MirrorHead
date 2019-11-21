@@ -4,33 +4,59 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    [SerializeField] int maxReflections;
-    [SerializeField] float maxDistance;
+    [SerializeField] int maxReflections = 20;
+    [SerializeField] float maxDistance = 200f;
 
-    public List<Vector2> Hits { get; private set; }
+    public List<Vector3> Hits { get; private set; } = new List<Vector3>();
     public int MaxReflections { get { return maxReflections; } }
 
-    public Vector2 Origin { get { return transform.position; } }
+    public Vector3 Origin { get { return transform.position; } }
+
+    Vector3 previousDirection;
+
+    int _hit;
+    public int HitCount;
     private void Start()
     {
-    }
-
-    private void Update()
-    {
-
+        Hits.Capacity = maxReflections;
     }
 
     private void OnDrawGizmos()
     {
-        CalculateReflections(transform.position, transform.right, maxReflections);
+        CalculatePath();
+
+        Gizmos.color = Color.yellow;
+
+        for (int i = 0; i < HitCount; i++)
+        {
+            if (i == 0)
+            {
+                Gizmos.DrawLine(Origin, Hits[0]);
+            }
+            else
+            {
+                Gizmos.DrawLine(Hits[i-1], Hits[i]);
+            }
+        }
     }
 
-    void CalculateReflections(Vector3 position, Vector3 direction, int remainingReflections)
+    void CalculatePath()
+    {
+        if (previousDirection != transform.right)
+        {
+            _hit = 0;
+            Hits.Capacity = maxReflections;
+            LaserPath(transform.position, transform.right, maxReflections);
+            HitCount = _hit;
+            previousDirection = transform.right;
+        }
+    }
+    void LaserPath(Vector3 position, Vector3 direction, int remainingReflections)
     {
         if (remainingReflections == 0)
             return;
 
-        Vector3 previousPosition = position;
+        _hit++;
 
         if (Physics.Raycast(position, direction, out RaycastHit hit, maxDistance))
         {
@@ -38,20 +64,35 @@ public class Laser : MonoBehaviour
             {
                 direction = Vector3.Reflect(direction, hit.normal);
                 position = hit.point;
+
+            }
+            else if (hit.transform.CompareTag("Player"))
+            {
+                Debug.Log($"{hit.transform.name} is dead");
             }
             else
             {
                 position = hit.point;
             }
+
+            if (Hits.Count > maxReflections - remainingReflections)
+            {
+                Hits[maxReflections - remainingReflections] = position;
+            }
+            else
+            {
+                Hits.Add(position);
+            }
+
+            if (hit.transform.CompareTag("Reflective"))
+            {
+
+                LaserPath(position, direction, remainingReflections - 1);
+            }
         }
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(previousPosition, position);
-
-        if (hit.transform.CompareTag("Reflective"))
+        else
         {
-            CalculateReflections(position, direction, remainingReflections - 1);
-
+            return;
         }
     }
 
