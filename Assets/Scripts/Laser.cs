@@ -4,29 +4,51 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    Ray ray;
-    bool hitNonReflectiveObject;
+    [SerializeField] int maxReflections;
+    [SerializeField] float maxDistance;
+
+    public List<Vector2> Hits { get; private set; }
+    public int MaxReflections { get { return maxReflections; } }
+
+    [SerializeField] Transform RayPoint;
+    public Vector2 Origin { get { return RayPoint.position; } }
     private void Start()
     {
-        ray = new Ray(transform.position, transform.up);
     }
 
     private void Update()
     {
-        if (Physics.Raycast(ray,out RaycastHit hit))
-        {
-            if(hit.transform.CompareTag("Reflection"))
-            {
 
-            }
-        }
-
-        while(calculatingRays)
-        {
-            Vector3 point;
-            Vector3 direction;
-
-            if(Physics.)
-        }
     }
+
+    private void OnDrawGizmos()
+    {
+        Ray ray = new Ray(RayPoint.position, RayPoint.right);
+        CalculateReflections(RayPoint.position, RayPoint.right, maxReflections);
+    }
+
+    void CalculateReflections(Vector3 position, Vector3 direction, int remainingReflections)
+    {
+        if (remainingReflections == 0)
+            return;
+
+        Vector3 previousPosition = position;
+
+
+        if (Physics.Raycast(position, direction, out RaycastHit hit, maxDistance))
+        {
+            if (hit.transform.CompareTag("Reflective"))
+                return;
+
+            direction = Vector3.Reflect(direction, hit.normal);
+            position = hit.point;
+        }
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(previousPosition, position);
+
+        CalculateReflections(position, direction, remainingReflections - 1);
+    }
+
+
 }
