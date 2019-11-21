@@ -19,6 +19,8 @@ public class Controller3D : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+
     }
 
     void OnCollisionEnter(Collision col)
