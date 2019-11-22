@@ -12,35 +12,14 @@ public class Laser : MonoBehaviour
 
     public Vector3 Origin { get { return transform.position; } }
 
+    public bool IsOn { get; private set; }
+
     Vector3 previousDirection;
 
     int _hit;
-    public int HitCount;
-    private void Start()
-    {
-        Hits.Capacity = maxReflections;
-    }
+    int HitCount;
 
-    private void OnDrawGizmos()
-    {
-        CalculatePath();
-
-        Gizmos.color = Color.yellow;
-
-        for (int i = 0; i < HitCount; i++)
-        {
-            if (i == 0)
-            {
-                Gizmos.DrawLine(Origin, Hits[0]);
-            }
-            else
-            {
-                Gizmos.DrawLine(Hits[i-1], Hits[i]);
-            }
-        }
-    }
-
-    void CalculatePath()
+    private void CalculatePath()
     {
         if (previousDirection != transform.right)
         {
@@ -51,7 +30,8 @@ public class Laser : MonoBehaviour
             previousDirection = transform.right;
         }
     }
-    void LaserPath(Vector3 position, Vector3 direction, int remainingReflections)
+
+    private void LaserPath(Vector3 position, Vector3 direction, int remainingReflections)
     {
         if (remainingReflections == 0)
             return;
@@ -96,5 +76,35 @@ public class Laser : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Hits.Capacity = maxReflections;
+    }
 
+    private void Update()
+    {
+        if (IsOn)
+        {
+            CalculatePath();
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        CalculatePath();
+
+        Gizmos.color = Color.yellow;
+
+        for (int i = 0; i < HitCount; i++)
+        {
+            if (i == 0)
+            {
+                Gizmos.DrawLine(Origin, Hits[0]);
+            }
+            else
+            {
+                Gizmos.DrawLine(Hits[i - 1], Hits[i]);
+            }
+        }
+    }
 }
