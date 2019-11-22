@@ -4,31 +4,90 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    [SerializeField] int maxReflections = 20;
-    [SerializeField] float maxDistance = 200f;
 
+    #region Public Variables
     public List<Vector3> Hits { get; private set; } = new List<Vector3>();
+    public int HitCount { get; private set; }
+
     public int MaxReflections { get { return maxReflections; } }
 
-    public Vector3 Origin { get { return transform.position; } }
+    public bool IsEnabled { get; private set; }
+    #endregion
 
-    public bool IsOn { get; private set; }
+    #region Private Variables
+    [SerializeField] GameObject prefab;
+    [SerializeField] int maxReflections = 20;
+    [SerializeField] float maxDistance = 200f;
+    [SerializeField] bool EnabledAtStart;
+    [SerializeField] bool showDebug = true;
 
     Vector3 previousDirection;
-
     int _hit;
-    int HitCount;
-
-    private void CalculatePath()
+    LineRenderer render;
+    bool ReflectionChanged;
+    #endregion
+    public void Activate()
     {
-        if (previousDirection != transform.right)
+        IsEnabled = true;
+    }
+
+    public void Deactivate()
+    {
+        IsEnabled = false;
+    }
+
+    private void Start()
+    {
+        Hits.Capacity = maxReflections;
+        render = GetComponent<LineRenderer>();
+        if (EnabledAtStart)
         {
-            _hit = 0;
-            Hits.Capacity = maxReflections;
-            LaserPath(transform.position, transform.right, maxReflections);
-            HitCount = _hit;
-            previousDirection = transform.right;
+            Activate();
+            UpdatePath();
+            UpdateRender();
         }
+    }
+
+    private void Update()
+    {
+        if (IsEnabled)
+        {
+            UpdateRender();
+            UpdatePath();
+        }
+    }
+
+    void UpdateRender()
+    {
+        if (ReflectionChanged)
+        {
+            ReflectionChanged = false;
+            Debug.Log("Reflections has changed");
+
+            Vector3[] renderPoints = new Vector3[HitCount + 1];
+            for (int i = 0; i < HitCount + 1; i++)
+            {
+                if (i == 0)
+                {
+                    renderPoints[i] = transform.position;
+                }
+                else
+                {
+                    renderPoints[i] = Hits[i - 1];
+                }
+            }
+
+            render.positionCount = renderPoints.Length;
+
+            render.SetPositions(renderPoints);
+        }
+    }
+
+    private void UpdatePath()
+    {
+        _hit = 0;
+        LaserPath(transform.position, transform.right, maxReflections);
+        HitCount = _hit;
     }
 
     private void LaserPath(Vector3 position, Vector3 direction, int remainingReflections)
@@ -55,12 +114,19 @@ public class Laser : MonoBehaviour
                 position = hit.point;
             }
 
-            if (Hits.Count > maxReflections - remainingReflections)
+            int currentReflectionIndex = maxReflections - remainingReflections;
+
+            if (Hits.Count > currentReflectionIndex)
             {
-                Hits[maxReflections - remainingReflections] = position;
+                if (Hits[currentReflectionIndex] != position)
+                {
+                    ReflectionChanged = true;
+                    Hits[currentReflectionIndex] = position;
+                }
             }
             else
             {
+                ReflectionChanged = true;
                 Hits.Add(position);
             }
 
@@ -76,34 +142,24 @@ public class Laser : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        Hits.Capacity = maxReflections;
-    }
-
-    private void Update()
-    {
-        if (IsOn)
-        {
-            CalculatePath();
-        }
-    }
-
     private void OnDrawGizmos()
     {
-        CalculatePath();
-
-        Gizmos.color = Color.yellow;
-
-        for (int i = 0; i < HitCount; i++)
+        if (showDebug)
         {
-            if (i == 0)
+            Hits.Capacity = maxReflections;
+            UpdatePath();
+
+            Gizmos.color = Color.yellow;
+            for (int i = 0; i < HitCount; i++)
             {
-                Gizmos.DrawLine(Origin, Hits[0]);
-            }
-            else
-            {
-                Gizmos.DrawLine(Hits[i - 1], Hits[i]);
+                if (i == 0)
+                {
+                    Gizmos.DrawLine(transform.position, Hits[0]);
+                }
+                else
+                {
+                    Gizmos.DrawLine(Hits[i - 1], Hits[i]);
+                }
             }
         }
     }
