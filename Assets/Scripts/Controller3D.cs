@@ -42,7 +42,7 @@ public class Controller3D : MonoBehaviour
 
         rb.AddForce(new Vector3(moveHorizontal, 0.0f, moveVertical) * speed);
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+        if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
             rb.AddForce(new Vector3(0, 5f, 0) * jumpSpeed, ForceMode.Impulse);
             isGrounded = false;
