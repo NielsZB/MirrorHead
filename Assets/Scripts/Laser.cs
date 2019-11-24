@@ -7,6 +7,8 @@ public class Laser : MonoBehaviour
 
     #region Public Variables
     public List<Vector3> Hits { get; private set; } = new List<Vector3>();
+    List<LaserParticles> beamParticlesSystems = new List<LaserParticles>();
+    List<LaserParticles> hitParticleSystems = new List<LaserParticles>();
     public int HitCount { get; private set; }
 
     public int MaxReflections { get { return maxReflections; } }
@@ -15,7 +17,8 @@ public class Laser : MonoBehaviour
     #endregion
 
     #region Private Variables
-    [SerializeField] GameObject prefab;
+    [SerializeField] LaserParticles beamParticlePrefab = null;
+    [SerializeField] LaserParticles hitParticlePrefab = null;
     [SerializeField] int maxReflections = 20;
     [SerializeField] float maxDistance = 200f;
     [SerializeField] bool EnabledAtStart;
@@ -44,7 +47,7 @@ public class Laser : MonoBehaviour
         {
             Activate();
             UpdatePath();
-            UpdateRender();
+            UpdateVisuals();
         }
     }
 
@@ -52,21 +55,38 @@ public class Laser : MonoBehaviour
     {
         if (IsEnabled)
         {
-            UpdateRender();
+            UpdateVisuals();
             UpdatePath();
         }
     }
 
-    void UpdateRender()
+    void UpdateVisuals()
     {
         if (ReflectionChanged)
         {
-            ReflectionChanged = false;
-            Debug.Log("Reflections has changed");
 
             Vector3[] renderPoints = new Vector3[HitCount + 1];
+
+            if (beamParticlesSystems.Count > 0)
+            {
+                for (int i = 0; i < beamParticlesSystems.Count; i++)
+                {
+                    beamParticlesSystems[i].Stop();
+                    beamParticlesSystems.Remove(beamParticlesSystems[i]);
+                }
+            }
+
+            if(hitParticleSystems.Count > 0)
+            {
+                for (int i = 0; i < hitParticleSystems.Count; i++)
+                {
+                    hitParticleSystems[i].Stop();
+                    hitParticleSystems.Remove(hitParticleSystems[i]);
+                }
+            }
             for (int i = 0; i < HitCount + 1; i++)
             {
+
                 if (i == 0)
                 {
                     renderPoints[i] = transform.position;
@@ -74,12 +94,27 @@ public class Laser : MonoBehaviour
                 else
                 {
                     renderPoints[i] = Hits[i - 1];
+
+                    LaserParticles sectionParticles = Instantiate(beamParticlePrefab);
+                    beamParticlesSystems.Add(sectionParticles);
+
+                    sectionParticles.SetBeamSystem(renderPoints[i - 1], renderPoints[i]);
                 }
+
+                if (i < HitCount)
+                {
+                    LaserParticles hitParticles = Instantiate(hitParticlePrefab);
+                    hitParticles.SetHitSystem(Hits[i]);
+                    hitParticleSystems.Add(hitParticles);
+                }
+
             }
 
             render.positionCount = renderPoints.Length;
 
             render.SetPositions(renderPoints);
+
+            ReflectionChanged = false;
         }
     }
 
@@ -141,6 +176,8 @@ public class Laser : MonoBehaviour
             return;
         }
     }
+
+
 
     private void OnDrawGizmos()
     {

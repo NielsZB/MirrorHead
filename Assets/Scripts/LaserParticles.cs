@@ -5,26 +5,24 @@ using UnityEngine;
 public class LaserParticles : MonoBehaviour
 {
     ParticleSystem system;
-    public Transform A, B;
-
-    float initialRateOverTimeMultiplier;
+    public float emmisionRate;
 
     private void Start()
     {
-        system = GetComponent<ParticleSystem>();
-
-        var emission = system.emission;
-
-        initialRateOverTimeMultiplier = emission.rateOverTimeMultiplier;
+        if (system == null)
+        {
+            system = GetComponent<ParticleSystem>();
+        }
     }
-
-    [ContextMenu("Set")]
-    void Set()
+  
+    public void Stop()
     {
-        SetParticleSystem(A.position, B.position);
-    }
+        system.Stop();
 
-    public void SetParticleSystem(Vector3 positionA, Vector3 positionB)
+        var main = system.main;
+        main.loop = false;
+    }
+    public void SetBeamSystem(Vector3 positionA, Vector3 positionB)
     {
 
         transform.position = Vector3.Lerp(positionA, positionB, 0.5f);
@@ -41,6 +39,16 @@ public class LaserParticles : MonoBehaviour
         shape.radius = (positionA - positionB).magnitude / 2;
 
         var emission = system.emission;
-        emission.rateOverTimeMultiplier = shape.radius;
+        emission.rateOverTimeMultiplier = emmisionRate * shape.radius;
+        system.Play();
+    }
+    public void SetHitSystem(Vector3 point)
+    {
+        if (system == null)
+        {
+            system = GetComponent<ParticleSystem>();
+        }
+        transform.position = point;
+        system.Play();
     }
 }
