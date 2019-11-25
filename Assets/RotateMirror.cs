@@ -5,7 +5,7 @@ using UnityEngine;
 public class RotateMirror : MonoBehaviour
 {
     public float mirrorSpeed = 2f;
-
+    public string mirrorButton = "Mirror_P1";
     void Start()
     {
        // print(transform.localEulerAngles.x);
@@ -14,7 +14,7 @@ public class RotateMirror : MonoBehaviour
 
         void Update()
     {
-        float mirrorRotate = Input.GetAxis("MouseX");
+        float mirrorRotate = Input.GetAxis(mirrorButton);
 
         transform.RotateAround(transform.position, (Vector3.forward * mirrorRotate * mirrorSpeed), Time.deltaTime * 90f);
         
