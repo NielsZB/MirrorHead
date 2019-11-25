@@ -647,10 +647,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 6bb3cd2d-9a39-43bd-887b-e54070334b9a
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: MirrorHead1
+  organizationId: daisykm
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
