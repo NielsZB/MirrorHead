@@ -12,52 +12,59 @@ public class Controller3D : MonoBehaviour
     Rigidbody rb;
     Vector3 m_Movement;
 
+    public string jumpButton = "Jump_P1";
+    public string horizontalCtrl = "Horizontal_P1";
+
     public GameObject mirror;
-    
 
-
-
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-        
-
-    }
-
-    void OnCollisionEnter(Collision col)
-
-    {
-        if (col.gameObject.tag == ("Ground") && isGrounded == false)
+          void Start()
         {
-            isGrounded = true;
+            rb = GetComponent<Rigidbody>();
+
+
         }
-        
-    }
 
+        void OnCollisionEnter(Collision col)
 
-    void Update()
-    {
-    
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        rb.AddForce(new Vector3(moveHorizontal, 0.0f, moveVertical) * speed);
-
-        if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
-            rb.AddForce(new Vector3(0, 5f, 0) * jumpSpeed, ForceMode.Impulse);
-            isGrounded = false;
+            if (col.gameObject.tag == ("Ground") && isGrounded == false)
+            {
+                isGrounded = true;
+            }
+
         }
 
 
-        //if (moveHorizontal = true) - rotate Character-Wheel around Z axis
-        //Mathf.Atan2 - pointing in screen space to select where the object goes
+        void Update()
+        {
 
-        mirror.transform.position = transform.position;
-    }
+            float moveHorizontal = Input.GetAxis(horizontalCtrl);
+            float moveVertical = Input.GetAxis("Vertical");
 
-    
+            rb.AddForce(new Vector3(moveHorizontal, 0.0f, moveVertical) * speed);
 
+            // if (Input.GetButtonDown("Jump") && isGrounded == true)
+            // {
+            //     rb.AddForce(new Vector3(0, 5f, 0) * jumpSpeed, ForceMode.Impulse);
+            //     isGrounded = false;
+            // }
+
+            if (Input.GetAxis(jumpButton) != 0 && isGrounded == true)
+            {
+                rb.AddForce(new Vector3(0, 5f, 0) * jumpSpeed, ForceMode.Impulse);
+                isGrounded = false;
+            }
+
+                     
+        
+
+            mirror.transform.position = transform.position;
+
+        //sound - int i = Random.Range(0,jumpClips.Length);
+        //AudioSource.PlayClipAtPoint((whateveraudiois),transform.position);
+        }
 }
+
+
+ 
 
