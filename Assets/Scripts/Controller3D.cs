@@ -11,6 +11,8 @@ public class Controller3D : MonoBehaviour
     public bool isGrounded;
     Rigidbody rb;
     Vector3 m_Movement;
+
+    public GameObject mirror;
     
 
 
@@ -36,7 +38,7 @@ public class Controller3D : MonoBehaviour
 
     void Update()
     {
-
+    
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
@@ -48,10 +50,11 @@ public class Controller3D : MonoBehaviour
             isGrounded = false;
         }
 
-       
+
         //if (moveHorizontal = true) - rotate Character-Wheel around Z axis
         //Mathf.Atan2 - pointing in screen space to select where the object goes
-        
+
+        mirror.transform.position = transform.position;
     }
 
     

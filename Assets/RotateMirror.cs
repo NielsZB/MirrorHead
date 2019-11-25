@@ -16,7 +16,7 @@ public class RotateMirror : MonoBehaviour
     {
         float mirrorRotate = Input.GetAxis("MouseX");
 
-        transform.RotateAround(transform.position, (transform.forward * mirrorRotate * mirrorSpeed), Time.deltaTime * 90f);
+        transform.RotateAround(transform.position, (Vector3.forward * mirrorRotate * mirrorSpeed), Time.deltaTime * 90f);
         
 
      
