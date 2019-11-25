@@ -4,7 +4,7 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.ColorShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Name\": \"Color\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"609cdf67-aa3f-40f8-83e3-0648b610649d\"\n    },\n    \"m_DefaultReferenceName\": \"Color_EABC4707\",\n    \"m_OverrideReferenceName\": \"_Color\",\n    \"m_Precision\": 0,\n    \"m_Value\": {\n        \"r\": 0.5094339847564697,\n        \"g\": 0.5094339847564697,\n        \"b\": 0.5094339847564697,\n        \"a\": 1.0\n    },\n    \"m_ColorMode\": 1,\n    \"m_Hidden\": false\n}"
+            "JSONnodeData": "{\n    \"m_Name\": \"Color\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"609cdf67-aa3f-40f8-83e3-0648b610649d\"\n    },\n    \"m_DefaultReferenceName\": \"Color_EABC4707\",\n    \"m_OverrideReferenceName\": \"_EmmisiveColor\",\n    \"m_Precision\": 0,\n    \"m_Value\": {\n        \"r\": 0.5094339847564697,\n        \"g\": 0.5094339847564697,\n        \"b\": 0.5094339847564697,\n        \"a\": 1.0\n    },\n    \"m_ColorMode\": 1,\n    \"m_Hidden\": false\n}"
         },
         {
             "typeInfo": {
