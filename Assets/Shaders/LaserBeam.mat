@@ -32,9 +32,11 @@ Material:
     - _BlendMode: 1
     - _CullMode: 2
     - _CullModeForward: 2
+    - _DetailIntensity: 0
     - _DoubleSidedEnable: 0
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 1
+    - _Intensity: 0
     - _ReceivesSSR: 0
     - _RenderQueueType: 5
     - _RequireSplitLighting: 0
@@ -60,6 +62,9 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Vector2_E47BD7A: {r: -5, g: 4, b: 0, a: 0}
-    - _Color: {r: 4, g: 1.5280945, b: 0, a: 1}
+    - _Color: {r: 110.13088, g: 51.31753, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissiveColor: {r: 110.13088, g: 51.31753, b: 0, a: 1}
+    - _Speed: {r: -5, g: 0.5, b: 0, a: 0}
+    - _UnlitColor: {r: 1, g: 0.5733666, b: 0.4009434, a: 1}
