@@ -221,9 +221,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: 20
-  speed: 40
+  speed: 60
   jumpSpeed: 4
   isGrounded: 0
+  jumpButton: Jump_P1
+  horizontalCtrl: Horizontal_P1
   mirror: {fileID: 4758061033849982894}
 --- !u!54 &1439658799559034914
 Rigidbody:
@@ -375,6 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mirrorSpeed: 10
+  mirrorButton: Mirror_P1
 --- !u!1 &5809585455705792863
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5809585455705792862}
   m_Layer: 0
-  m_Name: PLAYER
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
