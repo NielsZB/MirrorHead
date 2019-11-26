@@ -36,11 +36,11 @@ Material:
     - _DoubleSidedEnable: 0
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 1
-    - _InnerAlpha: 0.67
+    - _InnerAlpha: 0
     - _ReceivesSSR: 0
     - _RenderQueueType: 5
     - _RequireSplitLighting: 0
-    - _Size: 0.73
+    - _Size: 0
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 32
@@ -65,4 +65,5 @@ Material:
     - _Color: {r: 1.3350784, g: 1.3350784, b: 1.3350784, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmmisiveColor: {r: 1, g: 0.7495064, b: 0.5990566, a: 1}
     - _OuterColor: {r: 0.3584906, g: 0.16402636, b: 0.16402636, a: 1}

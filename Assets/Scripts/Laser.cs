@@ -140,12 +140,13 @@ public class Laser : MonoBehaviour
                 position = hit.point;
 
             }
-            else if (hit.transform.CompareTag("Player"))
-            {
-                Debug.Log($"{hit.transform.name} is dead");
-            }
             else
             {
+                if(hit.transform.CompareTag("Player") || hit.transform.CompareTag("Destructible") || hit.transform.CompareTag("Receiver"))
+                if(TryGetComponent( out TriggerResponse triggerEvent))
+                {
+                    triggerEvent.Activate();
+                }
                 position = hit.point;
             }
 
