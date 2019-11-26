@@ -29162,6 +29162,11 @@ PrefabInstance:
       propertyPath: jumpSpeed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 1439658799559034914, guid: dcffb590ef11d6e4da886b883874af40,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1176070853272965749, guid: dcffb590ef11d6e4da886b883874af40,
         type: 3}
       propertyPath: m_Layer
@@ -29175,12 +29180,22 @@ PrefabInstance:
     - target: {fileID: 4758061033849982894, guid: dcffb590ef11d6e4da886b883874af40,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4758061033849982894, guid: dcffb590ef11d6e4da886b883874af40,
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758061033849982888, guid: dcffb590ef11d6e4da886b883874af40,
+        type: 3}
+      propertyPath: mirrorRotateX
+      value: MirrorX_P1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758061033849982888, guid: dcffb590ef11d6e4da886b883874af40,
+        type: 3}
+      propertyPath: mirrorRotateY
+      value: MirrorY_P1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcffb590ef11d6e4da886b883874af40, type: 3}
