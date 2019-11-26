@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Reflective
   - Ground
+  - Destructible
+  - Receiver
   layers:
   - Default
   - TransparentFX
