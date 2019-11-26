@@ -5,6 +5,7 @@ using UnityEngine;
 public class Controller3D : MonoBehaviour
 
 {
+    public float maxVelocity = 20f;
     public float turnSpeed = 20f;
     public float speed = 2.0f;
     public float jumpSpeed = 20f;
@@ -41,9 +42,9 @@ public class Controller3D : MonoBehaviour
     {
         movementInput.Set(Input.GetAxis(horizontalCtrl), Input.GetAxis("Vertical"));
 
-        isGrounded = Physics.SphereCast(transform.position, 0.45f, Vector3.down, out hit,0.1f,mask);
+        isGrounded = Physics.SphereCast(transform.position, 0.45f, Vector3.down, out hit, 0.1f, mask);
 
-        if(Input.GetAxis(jumpButton) > 0.75f)
+        if (Input.GetAxis(jumpButton) > 0.75f)
         {
             jumpReset = true;
         }
@@ -71,8 +72,12 @@ public class Controller3D : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 projectedMovement = Vector3.ProjectOnPlane(new Vector3(movementInput.x, 0, 0),hit.normal);
+        Vector3 projectedMovement = Vector3.ProjectOnPlane(new Vector3(movementInput.x, 0, 0), hit.normal);
         rb.AddForce(new Vector3(movementInput.x, movementInput.y, 0f) * speed);
+        if (rb.velocity.magnitude > maxVelocity)
+        {
+            rb.velocity =rb.velocity.normalized*maxVelocity;
+        }
     }
 
     void Jump()
