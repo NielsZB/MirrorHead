@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8159358311359846046}
   - component: {fileID: 8159358311359846047}
   m_Layer: 0
-  m_Name: LaserHitParticles
+  m_Name: LaserStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8159358311359844704}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8159358311359846045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,8 +182,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 1
+      scalar: 0.75
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -298,8 +298,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.1
-      minScalar: 0.02
+      scalar: 0.2
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -673,7 +673,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 10
     angle: 45
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -879,7 +879,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 20
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -997,20 +997,20 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 1
-          inSlope: -2.1871173
-          outSlope: -2.1871173
+          inSlope: 0
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.12992126
+          outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 0.09289317
-          inSlope: -0.000014354034
-          outSlope: -0.000014354034
+          value: 0.17486338
+          inSlope: -1.1784542
+          outSlope: -1.1784542
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.20866144
+          inWeight: 0.17156863
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -4722,7 +4722,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2e5a661e48eb1754e818b437f9a1b0c2, type: 2}
+  - {fileID: 2100000, guid: 15ad847b1fa9e314f893d2f6f2bfeb69, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

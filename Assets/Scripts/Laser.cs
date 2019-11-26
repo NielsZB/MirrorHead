@@ -7,7 +7,8 @@ public class Laser : MonoBehaviour
 
     #region Public Variables
     public List<Vector3> Hits { get; private set; } = new List<Vector3>();
-    List<LaserParticles> beamParticlesSystems = new List<LaserParticles>();
+    List<Vector3> hitNormals = new List<Vector3>();
+
     List<LaserParticles> hitParticleSystems = new List<LaserParticles>();
     public int HitCount { get; private set; }
 
@@ -17,7 +18,6 @@ public class Laser : MonoBehaviour
     #endregion
 
     #region Private Variables
-    [SerializeField] LaserParticles beamParticlePrefab = null;
     [SerializeField] LaserParticles hitParticlePrefab = null;
     [SerializeField] int maxReflections = 20;
     [SerializeField] float maxDistance = 200f;
@@ -55,8 +55,8 @@ public class Laser : MonoBehaviour
     {
         if (IsEnabled)
         {
-            UpdateVisuals();
             UpdatePath();
+            UpdateVisuals();
         }
     }
 
@@ -66,15 +66,6 @@ public class Laser : MonoBehaviour
         {
 
             Vector3[] renderPoints = new Vector3[HitCount + 1];
-
-            if (beamParticlesSystems.Count > 0)
-            {
-                for (int i = 0; i < beamParticlesSystems.Count; i++)
-                {
-                    beamParticlesSystems[i].Stop();
-                    beamParticlesSystems.Remove(beamParticlesSystems[i]);
-                }
-            }
 
             if (hitParticleSystems.Count > 0)
             {
@@ -95,16 +86,13 @@ public class Laser : MonoBehaviour
                 {
                     renderPoints[i] = Hits[i - 1];
 
-                    LaserParticles sectionParticles = Instantiate(beamParticlePrefab);
-                    beamParticlesSystems.Add(sectionParticles);
-
-                    sectionParticles.SetBeamSystem(renderPoints[i - 1], renderPoints[i]);
                 }
 
                 if (i < HitCount)
                 {
                     LaserParticles hitParticles = Instantiate(hitParticlePrefab);
-                    hitParticles.SetHitSystem(Hits[i]);
+                    
+                    hitParticles.SetHitSystem(Hits[i],hitNormals[i]);
                     hitParticleSystems.Add(hitParticles);
                 }
 
@@ -138,7 +126,6 @@ public class Laser : MonoBehaviour
             {
                 direction = Vector3.Reflect(direction, hit.normal);
                 position = hit.point;
-
             }
             else
             {
@@ -160,11 +147,13 @@ public class Laser : MonoBehaviour
                 {
                     ReflectionChanged = true;
                     Hits[currentReflectionIndex] = position;
+                    hitNormals[currentReflectionIndex] = hit.normal;
                 }
             }
             else
             {
                 ReflectionChanged = true;
+                hitNormals.Add(hit.normal);
                 Hits.Add(position);
             }
 

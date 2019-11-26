@@ -56,15 +56,15 @@ Material:
     - _TransparentCullMode: 2
     - _TransparentSortPriority: 0
     - _UseShadowThreshold: 0
-    - _ZTestDepthEqualForOpaque: 8
+    - _ZTestDepthEqualForOpaque: 4
     - _ZTestGBuffer: 4
-    - _ZTestTransparent: 8
+    - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
     - Vector2_E47BD7A: {r: -5, g: 4, b: 0, a: 0}
-    - _Color: {r: 110.13088, g: 51.31753, b: 0, a: 1}
+    - _Color: {r: 229.93576, g: 1.9520509, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiveColor: {r: 110.13088, g: 51.31753, b: 0, a: 1}
+    - _EmissiveColor: {r: 229.93576, g: 1.9520509, b: 0, a: 1}
     - _Speed: {r: -7.5, g: 0.1, b: 0, a: 0}
     - _UnlitColor: {r: 1, g: 0.5733666, b: 0.4009434, a: 1}

@@ -42,13 +42,14 @@ public class LaserParticles : MonoBehaviour
         emission.rateOverTimeMultiplier = emmisionRate * shape.radius;
         system.Play();
     }
-    public void SetHitSystem(Vector3 point)
+    public void SetHitSystem(Vector3 point, Vector3 direction)
     {
         if (system == null)
         {
             system = GetComponent<ParticleSystem>();
         }
         transform.position = point;
+        transform.rotation = Quaternion.LookRotation(direction);
         system.Play();
     }
 }
