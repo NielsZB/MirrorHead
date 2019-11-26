@@ -1,28 +1,28 @@
 fileFormatVersion: 2
-guid: 41cac209396df27408f53669b61882b3
+guid: c6e0a6a22b777a84da54fd754af30aa7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6549325949377144398
-    second: mirrorheads_UI_2_0
+      213: -157104418128079206
+    second: UI_animation2_0
   - first:
-      213: 8191031256366469578
-    second: mirrorheads_UI_2_1
+      213: -8021598612869979321
+    second: UI_animation2_1
   - first:
-      213: 6365478155331587215
-    second: mirrorheads_UI_2_2
+      213: 2357549364731157232
+    second: UI_animation2_2
   - first:
-      213: 4355938766283333609
-    second: mirrorheads_UI_2_3
+      213: 5981238038663552380
+    second: UI_animation2_3
   - first:
-      213: -7586290903834846318
-    second: mirrorheads_UI_2_4
+      213: 3051712422431771800
+    second: UI_animation2_4
   - first:
-      213: -6248834291769414599
-    second: mirrorheads_UI_2_5
+      213: -7258500224559098540
+    second: UI_animation2_5
   - first:
-      213: -8751009925078187684
-    second: mirrorheads_UI_2_6
+      213: 4360470243968078097
+    second: UI_animation2_6
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -155,7 +155,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mirrorheads_UI_2_0
+      name: UI_animation2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -169,14 +169,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad16e0895412f6244bd256d9a34e4f2c
-      internalID: 6549325949377144398
+      spriteID: 02278069d192af242aa4dc79ba315afe
+      internalID: -157104418128079206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mirrorheads_UI_2_1
+      name: UI_animation2_1
       rect:
         serializedVersion: 2
         x: 539
@@ -190,14 +190,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be773ebaa1868d447afbd941b23e1fbb
-      internalID: 8191031256366469578
+      spriteID: 4525cea879d439f459e1646242efc4f2
+      internalID: -8021598612869979321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mirrorheads_UI_2_2
+      name: UI_animation2_2
       rect:
         serializedVersion: 2
         x: 1078
@@ -211,14 +211,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9b84e0ad5b76484cb6624b67bb7768f
-      internalID: 6365478155331587215
+      spriteID: 020e7f2a622e62441bf0d6289be8baad
+      internalID: 2357549364731157232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mirrorheads_UI_2_3
+      name: UI_animation2_3
       rect:
         serializedVersion: 2
         x: 1617
@@ -232,14 +232,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c8247f0014d22c4a9a7ecd63b7874e1
-      internalID: 4355938766283333609
+      spriteID: 43f141c810169614f9e335ed6efe15aa
+      internalID: 5981238038663552380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mirrorheads_UI_2_4
+      name: UI_animation2_4
       rect:
         serializedVersion: 2
         x: 2156
@@ -253,14 +253,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9dbd339eb44cc884d93ed3c512f371c2
-      internalID: -7586290903834846318
+      spriteID: d5101c3ef62e9884799b2dc701b600a2
+      internalID: 3051712422431771800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mirrorheads_UI_2_5
+      name: UI_animation2_5
       rect:
         serializedVersion: 2
         x: 2695
@@ -274,14 +274,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 565eff0800e87c7488497dd6a2d64a98
-      internalID: -6248834291769414599
+      spriteID: 8ffedd63d3934194f9598d3913d0732e
+      internalID: -7258500224559098540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mirrorheads_UI_2_6
+      name: UI_animation2_6
       rect:
         serializedVersion: 2
         x: 3234
@@ -295,8 +295,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac175683149799549a90d50bbad00a04
-      internalID: -8751009925078187684
+      spriteID: dc4d5dd807ca7e549b77eabb15e8e39f
+      internalID: 4360470243968078097
       vertices: []
       indices: 
       edges: []
@@ -304,7 +304,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 082c1fa4ea0c382489d128dcf8b23e1d
+    spriteID: 0d950f2edab03ce44bf585a88f6f4110
     internalID: 0
     vertices: []
     indices: 

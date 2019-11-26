@@ -76,7 +76,7 @@ public class Laser : MonoBehaviour
                 }
             }
 
-            if(hitParticleSystems.Count > 0)
+            if (hitParticleSystems.Count > 0)
             {
                 for (int i = 0; i < hitParticleSystems.Count; i++)
                 {
@@ -142,10 +142,12 @@ public class Laser : MonoBehaviour
             }
             else
             {
-                if(hit.transform.CompareTag("Player") || hit.transform.CompareTag("Destructible") || hit.transform.CompareTag("Receiver"))
-                if(TryGetComponent( out TriggerResponse triggerEvent))
+                if (hit.transform.CompareTag("Player") || hit.transform.CompareTag("Destructible") || hit.transform.CompareTag("Receiver"))
                 {
-                    triggerEvent.Activate();
+                    if (hit.transform.TryGetComponent(out TriggerResponse triggerEvent))
+                    {
+                        triggerEvent.Activate();
+                    }
                 }
                 position = hit.point;
             }
