@@ -29589,6 +29589,11 @@ PrefabInstance:
       propertyPath: maxVelocity
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1439658799559034941, guid: dcffb590ef11d6e4da886b883874af40,
+        type: 3}
+      propertyPath: mirror
+      value: 
+      objectReference: {fileID: 2131413831}
     - target: {fileID: 1439658799559034914, guid: dcffb590ef11d6e4da886b883874af40,
         type: 3}
       propertyPath: m_IsKinematic
@@ -29613,6 +29618,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758061033849982889, guid: dcffb590ef11d6e4da886b883874af40,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4758061033849982888, guid: dcffb590ef11d6e4da886b883874af40,
         type: 3}
@@ -49080,6 +49090,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: d9011fd58c005402bae1e44283bc24a5,
     type: 3}
   m_PrefabInstance: {fileID: 2129570079}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2131413831 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4753468070299209873, guid: dcffb590ef11d6e4da886b883874af40,
+    type: 3}
+  m_PrefabInstance: {fileID: 1277476670}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2140660368
 PrefabInstance:
