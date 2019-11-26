@@ -29197,6 +29197,11 @@ PrefabInstance:
       propertyPath: mirrorRotateY
       value: MirrorY_P1
       objectReference: {fileID: 0}
+    - target: {fileID: 4758061033849982888, guid: dcffb590ef11d6e4da886b883874af40,
+        type: 3}
+      propertyPath: mirrorSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcffb590ef11d6e4da886b883874af40, type: 3}
 --- !u!1001 &1278368000
