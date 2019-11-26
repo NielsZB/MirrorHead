@@ -7,64 +7,81 @@ public class Controller3D : MonoBehaviour
 {
     public float turnSpeed = 20f;
     public float speed = 2.0f;
-    public float jumpSpeed;
+    public float jumpSpeed = 20f;
     public bool isGrounded;
     Rigidbody rb;
     Vector3 m_Movement;
 
     public string jumpButton = "Jump_P1";
     public string horizontalCtrl = "Horizontal_P1";
+    public string verticalCtrl = "Vertical_P1";
 
     public GameObject mirror;
 
-          void Start()
+    Vector2 movementInput;
+    public LayerMask mask;
+    RaycastHit hit;
+    bool jumpReset;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == ("Ground") && isGrounded == false)
         {
-            rb = GetComponent<Rigidbody>();
-
-
+            isGrounded = true;
         }
 
-        void OnCollisionEnter(Collision col)
+    }
 
+
+    void Update()
+    {
+        movementInput.Set(Input.GetAxis(horizontalCtrl), Input.GetAxis("Vertical"));
+
+        isGrounded = Physics.SphereCast(transform.position, 0.45f, Vector3.down, out hit,0.1f,mask);
+
+        if(Input.GetAxis(jumpButton) > 0.75f)
         {
-            if (col.gameObject.tag == ("Ground") && isGrounded == false)
-            {
-                isGrounded = true;
-            }
+            jumpReset = true;
+        }
 
+        // if (Input.GetButtonDown("Jump") && isGrounded == true)
+        // {
+        //     rb.AddForce(new Vector3(0, 5f, 0) * jumpSpeed, ForceMode.Impulse);
+        //     isGrounded = false;
+        // }
+
+        if (Input.GetAxis(jumpButton) != 0 && isGrounded && jumpReset)
+        {
+            Jump();
+            jumpReset = false;
         }
 
 
-        void Update()
-        {
 
-            float moveHorizontal = Input.GetAxis(horizontalCtrl);
-            float moveVertical = Input.GetAxis("Vertical");
 
-            rb.AddForce(new Vector3(moveHorizontal, 0.0f, moveVertical) * speed);
-
-            // if (Input.GetButtonDown("Jump") && isGrounded == true)
-            // {
-            //     rb.AddForce(new Vector3(0, 5f, 0) * jumpSpeed, ForceMode.Impulse);
-            //     isGrounded = false;
-            // }
-
-            if (Input.GetAxis(jumpButton) != 0 && isGrounded == true)
-            {
-                rb.AddForce(new Vector3(0, 5f, 0) * jumpSpeed, ForceMode.Impulse);
-                isGrounded = false;
-            }
-
-                     
-        
-
-            mirror.transform.position = transform.position;
+        mirror.transform.position = transform.position;
 
         //sound - int i = Random.Range(0,jumpClips.Length);
         //AudioSource.PlayClipAtPoint((whateveraudiois),transform.position);
-        }
+    }
+
+    private void FixedUpdate()
+    {
+        Vector3 projectedMovement = Vector3.ProjectOnPlane(new Vector3(movementInput.x, 0, 0),hit.normal);
+        rb.AddForce(new Vector3(movementInput.x, movementInput.y, 0f) * speed);
+    }
+
+    void Jump()
+    {
+        rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+        isGrounded = false;
+    }
 }
 
 
- 
+
 
