@@ -11,18 +11,16 @@ public class Controller3D : MonoBehaviour
     public float jumpSpeed = 20f;
     public bool isGrounded;
     Rigidbody rb;
-    Vector3 m_Movement;
 
     public string jumpButton = "Jump_P1";
     public string horizontalCtrl = "Horizontal_P1";
     public string verticalCtrl = "Vertical_P1";
 
-    public GameObject mirror;
-
     Vector2 movementInput;
     public LayerMask mask;
     RaycastHit hit;
     bool jumpReset;
+    public Transform mirror;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -40,6 +38,7 @@ public class Controller3D : MonoBehaviour
 
     void Update()
     {
+        mirror.position = transform.position;
         movementInput.Set(Input.GetAxis(horizontalCtrl), Input.GetAxis("Vertical"));
 
         isGrounded = Physics.SphereCast(transform.position, 0.45f, Vector3.down, out hit, 0.1f, mask);
@@ -64,7 +63,7 @@ public class Controller3D : MonoBehaviour
 
 
 
-        mirror.transform.position = transform.position;
+        
 
         //sound - int i = Random.Range(0,jumpClips.Length);
         //AudioSource.PlayClipAtPoint((whateveraudiois),transform.position);

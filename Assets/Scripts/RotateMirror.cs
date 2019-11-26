@@ -21,9 +21,6 @@ public class RotateMirror : MonoBehaviour
             Quaternion q = Quaternion.Euler(0, 0, Mathf.Atan2(y, x) * Mathf.Rad2Deg);
             transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * mirrorSpeed);
         }
-
     }
-
-    // Transform.localEulerAngles = new Vector3(0, Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * 180 / Mathf.PI, 0);
 }
 
