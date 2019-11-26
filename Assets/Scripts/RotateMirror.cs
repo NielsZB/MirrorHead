@@ -5,21 +5,26 @@ using UnityEngine;
 public class RotateMirror : MonoBehaviour
 {
     public float mirrorSpeed = 2f;
-    public string mirrorButton = "Mirror_P1";
-    void Start()
+    public string mirrorRotateX = "Mirror_P1";
+    public string mirrorRotateY = "Mirror_P1";
+
+    float x;
+    float y;
+
+    void Update()
     {
-       // print(transform.localEulerAngles.x);
+        x = Input.GetAxis(mirrorRotateX);
+        y = Input.GetAxis(mirrorRotateY);
 
-    }
+        //if(x != 0 && y != 0)
+        //{
+        //    Quaternion
+        //    transform.rotation = Quaternion.Slerp()
+        //}
+        //transform.RotateAround(transform.position, (Vector3.forward * mirrorRotate * mirrorSpeed), Time.deltaTime * 90f);
 
-        void Update()
-    {
-        float mirrorRotate = Input.GetAxis(mirrorButton);
 
-        transform.RotateAround(transform.position, (Vector3.forward * mirrorRotate * mirrorSpeed), Time.deltaTime * 90f);
-        
 
-     
 
     }
 
