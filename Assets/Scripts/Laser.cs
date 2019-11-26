@@ -122,6 +122,10 @@ public class Laser : MonoBehaviour
 
         if (Physics.Raycast(position, direction, out RaycastHit hit, maxDistance))
         {
+            if(showDebug)
+            {
+                Debug.Log($"{hit.transform.name} got hit.", hit.transform.gameObject);
+            }
             if (hit.transform.CompareTag("Reflective"))
             {
                 direction = Vector3.Reflect(direction, hit.normal);
