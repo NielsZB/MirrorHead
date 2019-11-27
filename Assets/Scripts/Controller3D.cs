@@ -14,7 +14,6 @@ public class Controller3D : MonoBehaviour
 
     public string jumpButton = "Jump_P1";
     public string horizontalCtrl = "Horizontal_P1";
-    public string verticalCtrl = "Vertical_P1";
 
     Vector2 movementInput;
     public LayerMask mask;
@@ -39,7 +38,7 @@ public class Controller3D : MonoBehaviour
     void Update()
     {
         mirror.position = transform.position;
-        movementInput.Set(Input.GetAxis(horizontalCtrl), Input.GetAxis("Vertical"));
+        movementInput.Set(Input.GetAxis(horizontalCtrl), 0);
 
         isGrounded = Physics.SphereCast(transform.position, 0.45f, Vector3.down, out hit, 0.1f, mask);
 
@@ -47,12 +46,6 @@ public class Controller3D : MonoBehaviour
         {
             jumpReset = true;
         }
-
-        // if (Input.GetButtonDown("Jump") && isGrounded == true)
-        // {
-        //     rb.AddForce(new Vector3(0, 5f, 0) * jumpSpeed, ForceMode.Impulse);
-        //     isGrounded = false;
-        // }
 
         if (Input.GetAxis(jumpButton) != 0 && isGrounded && jumpReset)
         {
@@ -63,7 +56,7 @@ public class Controller3D : MonoBehaviour
 
 
 
-        
+
 
         //sound - int i = Random.Range(0,jumpClips.Length);
         //AudioSource.PlayClipAtPoint((whateveraudiois),transform.position);
@@ -75,7 +68,7 @@ public class Controller3D : MonoBehaviour
         rb.AddForce(new Vector3(movementInput.x, movementInput.y, 0f) * speed);
         if (rb.velocity.magnitude > maxVelocity)
         {
-            rb.velocity =rb.velocity.normalized*maxVelocity;
+            rb.velocity = rb.velocity.normalized * maxVelocity;
         }
     }
 
