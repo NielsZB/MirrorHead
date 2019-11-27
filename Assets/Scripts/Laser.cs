@@ -22,6 +22,7 @@ public class Laser : MonoBehaviour
     [SerializeField] int maxReflections = 20;
     [SerializeField] float maxDistance = 200f;
     [SerializeField] bool EnabledAtStart;
+    [SerializeField] LayerMask mask = new LayerMask();
     [SerializeField] bool showDebug = true;
 
     Vector3 previousDirection;
@@ -120,7 +121,7 @@ public class Laser : MonoBehaviour
 
         _hit++;
 
-        if (Physics.Raycast(position, direction, out RaycastHit hit, maxDistance))
+        if (Physics.Raycast(position, direction, out RaycastHit hit, maxDistance,mask))
         {
             if(showDebug)
             {

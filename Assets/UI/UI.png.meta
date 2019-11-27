@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: 32b9fa806ce604044b6e01d4ce3aaffa
+guid: e1eddff5480fb61498c2fff5cecf5e32
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 992990613826984364
-    second: cloudatlas_0
+      213: -1557013538026691241
+    second: UI_0
   - first:
-      213: -3155215181993607805
-    second: cloudatlas_1
+      213: 82707731993968007
+    second: UI_1
   - first:
-      213: -8851849253755619315
-    second: cloudatlas_2
+      213: 1080825480604336155
+    second: UI_2
   - first:
-      213: -1316555250845897241
-    second: cloudatlas_3
+      213: -9136572144232859775
+    second: UI_3
+  - first:
+      213: 8586885197115800619
+    second: UI_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -98,85 +101,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cloudatlas_0
+      name: UI_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 234
-        width: 253
-        height: 214
+        y: 222
+        width: 254
+        height: 211
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4c2e37dce791394c95ff4d4cf07ac0c
-      internalID: 992990613826984364
+      spriteID: b092c7cb3a245334983f123c0d129fcf
+      internalID: 82707731993968007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cloudatlas_1
+      name: UI_2
       rect:
         serializedVersion: 2
         x: 258
-        y: 234
-        width: 253
-        height: 214
+        y: 222
+        width: 254
+        height: 211
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7dfaedeea3a25e64a81d6e223534ad74
-      internalID: -3155215181993607805
+      spriteID: d9465da249f978f49b8bf6b62272e92c
+      internalID: 1080825480604336155
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cloudatlas_2
+      name: UI_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 4
-        width: 253
-        height: 214
+        y: 0
+        width: 254
+        height: 211
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f7f88afae021a646b86e99e3dbe31b5
-      internalID: -8851849253755619315
+      spriteID: b6326291189f10e43964c67621e4e2c8
+      internalID: -9136572144232859775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cloudatlas_3
+      name: UI_4
       rect:
         serializedVersion: 2
-        x: 259
-        y: 4
-        width: 253
-        height: 214
+        x: 258
+        y: 0
+        width: 254
+        height: 211
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66a54eaf322f53e4089d58469c950eb9
-      internalID: -1316555250845897241
+      spriteID: 2a16e97e5756be24583c0d7496994087
+      internalID: 8586885197115800619
       vertices: []
       indices: 
       edges: []
@@ -184,7 +187,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e6544eb2591c7a41bd352dd1a81e2c9
+    spriteID: 0d8bad9deb930ca40837708caa3c2f3d
     internalID: 0
     vertices: []
     indices: 
